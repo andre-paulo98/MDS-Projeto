@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUtilizadores));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btAdicionarNovo = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
@@ -68,6 +69,7 @@
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btAdicionarNovo);
             this.Controls.Add(this.listBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formUtilizadores";
             this.Text = "formUtilizadores";
             this.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formAddUtilizador));
             this.tbNome = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -91,7 +92,6 @@
             this.cbTipo.Name = "cbTipo";
             this.cbTipo.Size = new System.Drawing.Size(184, 21);
             this.cbTipo.TabIndex = 6;
-            this.cbTipo.SelectedIndex = 0;
             // 
             // button1
             // 
@@ -115,6 +115,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbNome);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formAddUtilizador";
             this.Text = "formAddUtilizador";
             this.ResumeLayout(false);
