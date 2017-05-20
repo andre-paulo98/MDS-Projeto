@@ -69,6 +69,12 @@
     <Compile Include="formMenu.Designer.cs">
       <DependentUpon>formMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="formMenuMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formMenuMedico.Designer.cs">
+      <DependentUpon>formMenuMedico.cs</DependentUpon>
+    </Compile>
     <Compile Include="formUtilizadores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formMenu.resx">
       <DependentUpon>formMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formMenuMedico.resx">
+      <DependentUpon>formMenuMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUtilizadores.resx">
       <DependentUpon>formUtilizadores.cs</DependentUpon>
