@@ -10,6 +10,7 @@ namespace ProjetoMDS
 {
     class DataBase
     {
+        
         public MySqlConnection Conn()
         {
             string CString = "server=localhost;database=mds-projeto;uid=root;pwd=;";
@@ -41,15 +42,16 @@ namespace ProjetoMDS
            
             return id;
         }
-        public void AddUser(String nome, String pw,int tipo)
+        public void AddUser(String nome, String pw,int permissao,string cargo)
         {
             //0-medico 1-rececionista 2-admin
             MySqlConnection con = Conn();
             MySqlCommand query = con.CreateCommand();
-            query.CommandText = "INSERT INTO users (username,password,permissao) VALUES (@username,@password,@tipo)";
+            query.CommandText = "INSERT INTO users (username,password,permissao,cargo) VALUES (@username,@password,@permissao,@cargo)";
             query.Parameters.AddWithValue("@username", nome);
             query.Parameters.AddWithValue("@password", pw);
-            query.Parameters.AddWithValue("@tipo", tipo);
+            query.Parameters.AddWithValue("@permissao", permissao);
+            query.Parameters.AddWithValue("@cargo", cargo);
             try
             {
                 con.Open();
@@ -64,8 +66,75 @@ namespace ProjetoMDS
                 con.Close();
             }
         }
+        public void removeUser(string nome)
+        {
+            MySqlConnection con = Conn();
+            MySqlCommand query = con.CreateCommand();
+            query.CommandText = "DELETE FROM users where username = @username";
+            query.Parameters.AddWithValue("@username", nome);
+            try
+            {
+                con.Open();
+                query.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public List<Users> getUsers()
+        {
+            List<Users> listUsers = new List<Users>();
 
-        // http://stackoverflow.com/a/14709940/6195472
+            MySqlConnection con = Conn();
+            MySqlCommand query = con.CreateCommand();
+            query.CommandText = "Select * from users";
+            try
+            {
+                con.Open();
+                MySqlDataReader reader = query.ExecuteReader();
+                while (reader.Read())
+                {
+                    Users user = new Users();
+                    user.username = reader.GetString(1);
+                    user.password = reader.GetString(2);
+                    user.permissao = reader.GetInt32(3);
+                    user.cargo = reader.GetString(4);
+                    listUsers.Add(user);
+                }
+                
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return listUsers;
+        }
+        public bool verifyUser(string Username)
+        {
+            bool flag = false;
+
+            foreach (Users user in getUsers())
+            {
+                if (user.username == Username)
+                    flag = true;
+            }
+
+            return flag; //return true se existir user
+        }
+
+
+       
         public string HashPassword(string password)
         {
             System.Security.Cryptography.SHA256Managed crypt = new System.Security.Cryptography.SHA256Managed();
@@ -76,6 +145,6 @@ namespace ProjetoMDS
                 hash.Append(theByte.ToString("x2"));
             }
             return hash.ToString();
-        }
+        } //http://stackoverflow.com/a/14709940/6195472
     }
 }
