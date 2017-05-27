@@ -41,6 +41,10 @@ namespace ProjetoMDS
            
             return id;
         }
+
+        /// <summary>
+        /// Adiciona um Rececionista/Admin
+        /// </summary>
         public void AddUser(String nome, String pw,int tipo)
         {
             //0-medico 1-rececionista 2-admin
@@ -61,6 +65,29 @@ namespace ProjetoMDS
             }
             finally
             {
+                con.Close();
+            }
+        }
+        
+        /// <summary>
+        /// Adiciona um médico
+        /// </summary>
+        public void AddUser(String nome, String pw, int tipo, string especialidade, string horaEntrada, string horaSaida) {
+            MySqlConnection con = Conn();
+            MySqlCommand query = con.CreateCommand();
+            query.CommandText = "INSERT INTO users (username,password,permissao,med_especialidade,med_horaentrada,med_horasaida) VALUES (@username,@password,@tipo,@especialidade,@entrada,@saida)";
+            query.Parameters.AddWithValue("@username", nome);
+            query.Parameters.AddWithValue("@password", pw);
+            query.Parameters.AddWithValue("@tipo", tipo); //@especialidade,@entrada,@saida
+            query.Parameters.AddWithValue("@especialidade",especialidade);
+            query.Parameters.AddWithValue("@entrada",horaEntrada);
+            query.Parameters.AddWithValue("@saida",horaSaida);
+            try {
+                con.Open();
+                query.ExecuteNonQuery();
+            } catch(Exception ex) {
+                MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex);
+            } finally {
                 con.Close();
             }
         }
