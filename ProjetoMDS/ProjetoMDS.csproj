@@ -63,12 +63,6 @@
     <Compile Include="formLogin.Designer.cs">
       <DependentUpon>formLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="formMedicos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formMedicos.Designer.cs">
-      <DependentUpon>formMedicos.cs</DependentUpon>
-    </Compile>
     <Compile Include="formMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,14 +83,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users.cs" />
     <EmbeddedResource Include="formAddUtilizador.resx">
       <DependentUpon>formAddUtilizador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="formMedicos.resx">
-      <DependentUpon>formMedicos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formMenu.resx">
       <DependentUpon>formMenu.cs</DependentUpon>

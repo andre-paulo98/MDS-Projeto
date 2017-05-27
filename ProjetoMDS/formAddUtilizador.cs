@@ -12,34 +12,36 @@ namespace ProjetoMDS
 {
     public partial class formAddUtilizador : Form
     {
-        DataBase db = new DataBase();
+        DataBase db;
         public formAddUtilizador(formUtilizadores user)
         {
             InitializeComponent();
+            db= new DataBase();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(cbTipo.SelectedIndex != 0) {
-                if(tbNome.TextLength == 0 || tbPassword.TextLength == 0) {
-                    MessageBox.Show("Introduza todos os campos obrigatórios", "Dados inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                } else {
-                    db.AddUser(tbNome.Text, db.HashPassword(tbPassword.Text), cbTipo.SelectedIndex);
-                    Close();
-                }
-            } else { //medico
-                if(tbNome.TextLength == 0 || tbPassword.TextLength == 0) {
+            if (tbNome.TextLength == 0 || tbPassword.TextLength == 0 || cbTipo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Introduza todos os campos obrigatórios", "Dados inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (db.verifyUser(tbNome.Text))
+            {
+                MessageBox.Show("Utilizador já existe", "Dados inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Users novoUser = new Users();
 
-                } else {
-                    string nome = tbNome.Text;
-                    string pw = db.HashPassword(tbPassword.Text);
-                    int tipo = cbTipo.SelectedIndex;
-                    string especialidade = cbEspecialidade.SelectedItem.ToString();
-                    string horaEntrada = dtHoraEntrada.Value.ToShortTimeString();
-                    string horaSaida = dtHoraSaida.Value.ToShortTimeString();
-                    db.AddUser(nome, pw, tipo, especialidade, horaEntrada, horaSaida);
-                }
+                novoUser.username = tbNome.Text;
+                novoUser.password = db.HashPassword(tbPassword.Text);
+                novoUser.permissao = cbTipo.SelectedIndex;
+                novoUser.cargo = cbTipo.SelectedItem.ToString();
+
+                db.AddUser(novoUser.username, novoUser.password, novoUser.permissao, novoUser.cargo);
+                Close();
+            }
                 
             } 
                 
@@ -52,6 +54,11 @@ namespace ProjetoMDS
             } else {
                 groupBox2.Visible = false;
             }
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
