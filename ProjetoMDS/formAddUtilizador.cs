@@ -16,6 +16,8 @@ namespace ProjetoMDS
         public formAddUtilizador(formUtilizadores user)
         {
             InitializeComponent();
+            cbTipo.SelectedIndex = 0;
+            cbEspecialidade.SelectedIndex = 0;
             db= new DataBase();
 
         }
@@ -38,27 +40,46 @@ namespace ProjetoMDS
                 novoUser.password = db.HashPassword(tbPassword.Text);
                 novoUser.permissao = cbTipo.SelectedIndex;
                 novoUser.cargo = cbTipo.SelectedItem.ToString();
+                if(cbTipo.SelectedIndex != 0) {
+                    db.AddUser(novoUser.username, novoUser.password, novoUser.permissao, novoUser.cargo);
+                } else {
+                    novoUser.especialidade = cbEspecialidade.SelectedItem.ToString();
+                    novoUser.horaEntrada = dtHoraEntrada.Value.ToShortTimeString();
+                    novoUser.horaSaida = dtHoraSaida.Value.ToShortTimeString();
+                    novoUser.nSegSocial = Int32.Parse(nSegSocial.Text);
+                    db.AddUser(novoUser.username, novoUser.password, novoUser.permissao, novoUser.cargo, novoUser.especialidade, novoUser.horaEntrada, novoUser.horaSaida, novoUser.nSegSocial);
+                }
 
-                db.AddUser(novoUser.username, novoUser.password, novoUser.permissao, novoUser.cargo);
+               
                 Close();
             }
-                
-            } 
                 
             
         }
 
+        private void btCancelar_Click(object sender, EventArgs e) {
+            Close();
+        }
+
         private void cbTipo_SelectedIndexChanged(object sender, EventArgs e) {
             if(cbTipo.SelectedIndex == 0) { // medico
-                groupBox2.Visible = true;
+                groupBox1.Visible = true;
             } else {
-                groupBox2.Visible = false;
+                groupBox1.Visible = false;
             }
         }
 
-        private void btCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
+        private void dtHoraEntrada_ValueChanged(object sender, EventArgs e) {
+            if(dtHoraEntrada.Value >= dtHoraSaida.Value) {
+                dtHoraSaida.Value = dtHoraEntrada.Value.AddMinutes(1);
+            }
         }
+        private void dtHoraSaida_ValueChanged(object sender, EventArgs e) {
+            if(dtHoraSaida.Value <= dtHoraEntrada.Value) {
+                dtHoraEntrada.Value = dtHoraSaida.Value.AddMinutes(-1);
+            }
+        }
+
+        
     }
 }
