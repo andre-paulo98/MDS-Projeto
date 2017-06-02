@@ -12,14 +12,13 @@ namespace ProjetoMDS
 {
     public partial class formAddUtilizador : Form
     {
-        DataBase db;
+        UserRepository userRepo;
         public formAddUtilizador(formUtilizadores user)
         {
             InitializeComponent();
+            userRepo = new UserRepository();
             cbTipo.SelectedIndex = 0;
             cbEspecialidade.SelectedIndex = 0;
-            db= new DataBase();
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,26 +27,25 @@ namespace ProjetoMDS
             {
                 MessageBox.Show("Introduza todos os campos obrigatórios", "Dados inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (db.verifyUser(tbNome.Text))
+            if (userRepo.GetUserByUsename(tbNome.Text).id != 0)
             {
                 MessageBox.Show("Utilizador já existe", "Dados inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                Users novoUser = new Users();
+                Medico novoUser = new Medico();
 
                 novoUser.username = tbNome.Text;
-                novoUser.password = db.HashPassword(tbPassword.Text);
+                novoUser.password = Tools.HashPassword(tbPassword.Text);
                 novoUser.permissao = cbTipo.SelectedIndex;
-                novoUser.cargo = cbTipo.SelectedItem.ToString();
                 if(cbTipo.SelectedIndex != 0) {
-                    db.AddUser(novoUser.username, novoUser.password, novoUser.permissao, novoUser.cargo);
+                    userRepo.Add(novoUser);
                 } else {
                     novoUser.especialidade = cbEspecialidade.SelectedItem.ToString();
-                    novoUser.horaEntrada = dtHoraEntrada.Value.ToShortTimeString();
-                    novoUser.horaSaida = dtHoraSaida.Value.ToShortTimeString();
+                    novoUser.entrada = dtHoraEntrada.Value;
+                    novoUser.saida = dtHoraSaida.Value;
                     novoUser.nSegSocial = Int32.Parse(nSegSocial.Text);
-                    db.AddUser(novoUser.username, novoUser.password, novoUser.permissao, novoUser.cargo, novoUser.especialidade, novoUser.horaEntrada, novoUser.horaSaida, novoUser.nSegSocial);
+                    new MedioRepository().Add(novoUser);
                 }
 
                

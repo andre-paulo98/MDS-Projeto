@@ -7,8 +7,8 @@ using System.Collections.Generic;
 namespace ProjetoMDS {
     public partial class formLogin : Form
     {
-        DataBase db = new DataBase();
-        List<Users> listUser;
+        UserRepository userRepo = new UserRepository();
+
         public formLogin()
         {
             InitializeComponent();
@@ -18,16 +18,12 @@ namespace ProjetoMDS {
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            User user = new User();
             formMenu formMenu = new formMenu();
-            if (db.Login(tbNome.Text, db.HashPassword(tbPassword.Text)) >= 0)
+            if (userRepo.Login(tbNome.Text, Tools.HashPassword(tbPassword.Text)))
             {
-                formMenu.Show();
+                new formMenu().Show();
                 Hide();
-            }
-            else
-            {
-                MessageBox.Show("Erro. Credenciais inválidas.");
             }
         }
     }

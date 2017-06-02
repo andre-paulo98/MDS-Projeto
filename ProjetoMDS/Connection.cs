@@ -8,15 +8,19 @@ using System.Windows.Forms;
 
 namespace ProjetoMDS
 {
-    class DataBase
+    class Connection
     {
-        
-        public MySqlConnection Conn()
+        /*MySqlConnection con;
+        public Connection()
         {
-            string CString = "server=localhost;database=mds-projeto;uid=root;pwd=;";
-            MySqlConnection con = new MySqlConnection(CString);
-            return con; 
+            string CString = 
+                "server=localhost;"+
+                "database=mds-projeto;"+
+                "uid=root;"+
+                "pwd=;";
+            con = new MySqlConnection(CString);
         }
+
         public int Login(String nome, String pw)
         {
             MySqlConnection con = Conn();
@@ -118,9 +122,9 @@ namespace ProjetoMDS
                 con.Close();
             }
         }
-        public List<Users> getUsers()
+        public List<User> getUsers()
         {
-            List<Users> listUsers = new List<Users>();
+            List<User> listUsers = new List<User>();
 
             MySqlConnection con = Conn();
             MySqlCommand query = con.CreateCommand();
@@ -131,7 +135,7 @@ namespace ProjetoMDS
                 MySqlDataReader reader = query.ExecuteReader();
                 while (reader.Read())
                 {
-                    Users user = new Users();
+                    User user = new User();
                     user.username = reader.GetString(1);
                     user.password = reader.GetString(2);
                     user.permissao = reader.GetInt32(3);
@@ -156,7 +160,7 @@ namespace ProjetoMDS
         {
             bool flag = false;
 
-            foreach (Users user in getUsers())
+            foreach (User user in getUsers())
             {
                 if (user.username == Username)
                     flag = true;
@@ -177,5 +181,6 @@ namespace ProjetoMDS
             }
             return hash.ToString();
         } //http://stackoverflow.com/a/14709940/6195472
+        */
     }
 }

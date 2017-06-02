@@ -12,11 +12,13 @@ namespace ProjetoMDS
 {
     public partial class formUtilizadores : Form
     {
-        DataBase db = new DataBase();
-        List<Users> listUser = new List<Users>();
+        List<User> listUser = new List<User>();
+        UserRepository userRepo;
+
         public formUtilizadores()
         {
             InitializeComponent();
+            userRepo = new UserRepository();
             refreshList();
         }
 
@@ -24,15 +26,15 @@ namespace ProjetoMDS
         {
             formAddUtilizador addUser = new formAddUtilizador(this);
             addUser.FormClosing += new FormClosingEventHandler(formUtilizadores_FormClosing);
-            addUser.Show();
+            addUser.ShowDialog(this);
         }
         private void refreshList()
         {
             lbUser.Items.Clear();
 
-            listUser = db.getUsers();
+            listUser = userRepo.GetUsers();
 
-            foreach (Users user in listUser)
+            foreach (User user in listUser)
             {
                 lbUser.Items.Add(user);
             }
@@ -42,8 +44,8 @@ namespace ProjetoMDS
         {
             if (lbUser.SelectedIndex != -1)
             {
-                Users userRemover = (Users)lbUser.SelectedItem;
-                db.removeUser(userRemover.username);
+                User userRemover = (User)lbUser.SelectedItem;
+                userRepo.Remove(userRemover);
                 refreshList();
             }
         }

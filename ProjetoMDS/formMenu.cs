@@ -20,10 +20,5 @@ namespace ProjetoMDS
             formUtilizadores formUtilizadores = new formUtilizadores();
             formUtilizadores.Show();
         }
-
-        private void button1_Click(object sender, EventArgs e) {
-            formMenuMedico formMenuMedicos = new formMenuMedico();
-            formMenuMedicos.Show();
-        }
     }
 }
