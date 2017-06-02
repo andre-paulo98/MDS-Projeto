@@ -5,8 +5,10 @@ namespace ProjetoMDS
 {
     public partial class formMenu : Form
     {
-        public formMenu()
+        User user;
+        public formMenu(User user)
         {
+            this.user = user;
             InitializeComponent();
         }
 
@@ -22,7 +24,8 @@ namespace ProjetoMDS
         }
 
         private void btConsultas_Click(object sender, EventArgs e) {
-
+            formListaPacientes formPacientes = new formListaPacientes(user);
+            formPacientes.Show();
         }
     }
 }

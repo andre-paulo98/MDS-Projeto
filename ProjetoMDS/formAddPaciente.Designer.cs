@@ -38,17 +38,11 @@
             this.tb_morada = new System.Windows.Forms.TextBox();
             this.tb_nacionalidade = new System.Windows.Forms.TextBox();
             this.dp_data_nasc = new System.Windows.Forms.DateTimePicker();
-            this.nud_nif = new System.Windows.Forms.NumericUpDown();
-            this.nud_cc = new System.Windows.Forms.NumericUpDown();
-            this.nud_sns = new System.Windows.Forms.NumericUpDown();
-            this.nud_cod1 = new System.Windows.Forms.NumericUpDown();
-            this.nud_cod2 = new System.Windows.Forms.NumericUpDown();
+            this.tb_codposta = new System.Windows.Forms.MaskedTextBox();
+            this.tb_nif = new System.Windows.Forms.MaskedTextBox();
+            this.tb_cc = new System.Windows.Forms.MaskedTextBox();
+            this.tb_sns = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_nif)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_cc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_sns)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_cod1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_cod2)).BeginInit();
             this.SuspendLayout();
             // 
             // pb_avatar
@@ -141,6 +135,7 @@
             this.bt_cancelar.TabIndex = 9;
             this.bt_cancelar.Text = "Cancelar";
             this.bt_cancelar.UseVisualStyleBackColor = true;
+            this.bt_cancelar.Click += new System.EventHandler(this.bt_cancelar_Click);
             // 
             // bt_guardar
             // 
@@ -175,56 +170,53 @@
             // 
             // dp_data_nasc
             // 
+            this.dp_data_nasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dp_data_nasc.Location = new System.Drawing.Point(266, 35);
             this.dp_data_nasc.Name = "dp_data_nasc";
-            this.dp_data_nasc.Size = new System.Drawing.Size(200, 20);
+            this.dp_data_nasc.Size = new System.Drawing.Size(86, 20);
             this.dp_data_nasc.TabIndex = 17;
             // 
-            // nud_nif
+            // tb_codposta
             // 
-            this.nud_nif.Location = new System.Drawing.Point(74, 156);
-            this.nud_nif.Name = "nud_nif";
-            this.nud_nif.Size = new System.Drawing.Size(120, 20);
-            this.nud_nif.TabIndex = 18;
+            this.tb_codposta.Location = new System.Drawing.Point(234, 91);
+            this.tb_codposta.Mask = "0000-999";
+            this.tb_codposta.Name = "tb_codposta";
+            this.tb_codposta.Size = new System.Drawing.Size(54, 20);
+            this.tb_codposta.TabIndex = 18;
             // 
-            // nud_cc
+            // tb_nif
             // 
-            this.nud_cc.Location = new System.Drawing.Point(74, 182);
-            this.nud_cc.Name = "nud_cc";
-            this.nud_cc.Size = new System.Drawing.Size(120, 20);
-            this.nud_cc.TabIndex = 19;
+            this.tb_nif.Location = new System.Drawing.Point(78, 155);
+            this.tb_nif.Mask = "000000000";
+            this.tb_nif.Name = "tb_nif";
+            this.tb_nif.Size = new System.Drawing.Size(69, 20);
+            this.tb_nif.TabIndex = 19;
             // 
-            // nud_sns
+            // tb_cc
             // 
-            this.nud_sns.Location = new System.Drawing.Point(74, 208);
-            this.nud_sns.Name = "nud_sns";
-            this.nud_sns.Size = new System.Drawing.Size(120, 20);
-            this.nud_sns.TabIndex = 20;
+            this.tb_cc.Location = new System.Drawing.Point(78, 181);
+            this.tb_cc.Mask = "000000000";
+            this.tb_cc.Name = "tb_cc";
+            this.tb_cc.Size = new System.Drawing.Size(69, 20);
+            this.tb_cc.TabIndex = 20;
             // 
-            // nud_cod1
+            // tb_sns
             // 
-            this.nud_cod1.Location = new System.Drawing.Point(234, 87);
-            this.nud_cod1.Name = "nud_cod1";
-            this.nud_cod1.Size = new System.Drawing.Size(76, 20);
-            this.nud_cod1.TabIndex = 21;
-            // 
-            // nud_cod2
-            // 
-            this.nud_cod2.Location = new System.Drawing.Point(316, 87);
-            this.nud_cod2.Name = "nud_cod2";
-            this.nud_cod2.Size = new System.Drawing.Size(79, 20);
-            this.nud_cod2.TabIndex = 22;
+            this.tb_sns.Location = new System.Drawing.Point(78, 207);
+            this.tb_sns.Mask = "000000000";
+            this.tb_sns.Name = "tb_sns";
+            this.tb_sns.Size = new System.Drawing.Size(69, 20);
+            this.tb_sns.TabIndex = 21;
             // 
             // formAddPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 290);
-            this.Controls.Add(this.nud_cod2);
-            this.Controls.Add(this.nud_cod1);
-            this.Controls.Add(this.nud_sns);
-            this.Controls.Add(this.nud_cc);
-            this.Controls.Add(this.nud_nif);
+            this.Controls.Add(this.tb_sns);
+            this.Controls.Add(this.tb_cc);
+            this.Controls.Add(this.tb_nif);
+            this.Controls.Add(this.tb_codposta);
             this.Controls.Add(this.dp_data_nasc);
             this.Controls.Add(this.tb_nacionalidade);
             this.Controls.Add(this.tb_morada);
@@ -243,11 +235,6 @@
             this.Name = "formAddPaciente";
             this.Text = "formAddPaciente";
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_nif)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_cc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_sns)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_cod1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_cod2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,10 +257,9 @@
         private System.Windows.Forms.TextBox tb_morada;
         private System.Windows.Forms.TextBox tb_nacionalidade;
         private System.Windows.Forms.DateTimePicker dp_data_nasc;
-        private System.Windows.Forms.NumericUpDown nud_nif;
-        private System.Windows.Forms.NumericUpDown nud_cc;
-        private System.Windows.Forms.NumericUpDown nud_sns;
-        private System.Windows.Forms.NumericUpDown nud_cod1;
-        private System.Windows.Forms.NumericUpDown nud_cod2;
+        private System.Windows.Forms.MaskedTextBox tb_codposta;
+        private System.Windows.Forms.MaskedTextBox tb_nif;
+        private System.Windows.Forms.MaskedTextBox tb_cc;
+        private System.Windows.Forms.MaskedTextBox tb_sns;
     }
 }

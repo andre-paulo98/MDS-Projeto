@@ -28,7 +28,7 @@
             this.n_cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.n_sns = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ativo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bt_novo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,22 +73,22 @@
             this.ativo.Name = "ativo";
             this.ativo.ReadOnly = true;
             // 
-            // button1
+            // bt_novo
             // 
-            this.button1.Location = new System.Drawing.Point(30, 457);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Novo Paciente";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bt_novo.Location = new System.Drawing.Point(30, 457);
+            this.bt_novo.Name = "bt_novo";
+            this.bt_novo.Size = new System.Drawing.Size(118, 30);
+            this.bt_novo.TabIndex = 1;
+            this.bt_novo.Text = "Novo Paciente";
+            this.bt_novo.UseVisualStyleBackColor = true;
+            this.bt_novo.Click += new System.EventHandler(this.button1_Click);
             // 
             // formListaPacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 499);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bt_novo);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "formListaPacientes";
@@ -105,6 +105,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn n_cc;
         private System.Windows.Forms.DataGridViewTextBoxColumn n_sns;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ativo;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bt_novo;
     }
 }

@@ -22,5 +22,9 @@ namespace ProjetoMDS {
         public int N_cc { get; set; }
 
         public int N_sns { get; set; }
+
+        public string Avatar { get; set; }
+
+        public User User { get; set; }
     }
 }

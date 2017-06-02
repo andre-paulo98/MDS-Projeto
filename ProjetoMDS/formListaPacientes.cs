@@ -10,12 +10,14 @@ using System.Windows.Forms;
 
 namespace ProjetoMDS {
     public partial class formListaPacientes : Form {
-        public formListaPacientes() {
+        User user;
+        public formListaPacientes(User user) {
+            this.user = user;
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e) {
-
+            new formAddPaciente(user).Show();
         }
     }
 }

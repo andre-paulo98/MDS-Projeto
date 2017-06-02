@@ -13,7 +13,7 @@ namespace ProjetoMDS
     public partial class formAgendarConsulta : Form
     {
         Medico medico = new Medico();
-        MedioRepository medioRepos = new MedioRepository();
+        MedicosRepository medioRepos = new MedicosRepository();
         consultaRepository consultaRepos = new consultaRepository();
         Consulta novaConsulta;
         List<Medico> medicoList = new List<Medico>();

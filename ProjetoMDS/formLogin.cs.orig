@@ -19,6 +19,7 @@ namespace ProjetoMDS {
 
         private void button1_Click(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             
             if (userRepo.Login(tbNome.Text, Tools.HashPassword(tbPassword.Text)))
             {
@@ -30,10 +31,17 @@ namespace ProjetoMDS {
                 }
                 else
                 {
-                    formMenu formMenu = new formMenu(user);
+                    formMenu formMenu = new formMenu();
                     formMenu.Show();
                 }
                 
+=======
+            User user = new User();
+            formMenu formMenu = new formMenu(user);
+            if (userRepo.Login(tbNome.Text, Tools.HashPassword(tbPassword.Text)))
+            {
+                new formMenu(user).Show();
+>>>>>>> Stashed changes
                 Hide();
             }
         }

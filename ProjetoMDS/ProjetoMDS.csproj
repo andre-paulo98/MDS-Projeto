@@ -108,7 +108,7 @@
       <DependentUpon>formUtilizadores.cs</DependentUpon>
     </Compile>
     <Compile Include="Medico.cs" />
-    <Compile Include="MedioRepository.cs" />
+    <Compile Include="MedicoRepository.cs" />
     <Compile Include="Paciente.cs" />
     <Compile Include="PacienteRepository.cs" />
     <Compile Include="Program.cs" />

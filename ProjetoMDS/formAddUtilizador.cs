@@ -45,7 +45,7 @@ namespace ProjetoMDS
                     novoUser.entrada = dtHoraEntrada.Value;
                     novoUser.saida = dtHoraSaida.Value;
                     novoUser.nSegSocial = Int32.Parse(nSegSocial.Text);
-                    new MedioRepository().Add(novoUser);
+                    new MedicosRepository().Add(novoUser);
                 }
 
                

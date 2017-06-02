@@ -10,7 +10,11 @@ using System.Windows.Forms;
 
 namespace ProjetoMDS {
     public partial class formAddPaciente : Form {
-        public formAddPaciente() {
+
+        User user;
+        PacienteRepository pacienteRepo = new PacienteRepository();
+        public formAddPaciente(User user) {
+            this.user = user;
             InitializeComponent();
         }
 
@@ -20,11 +24,25 @@ namespace ProjetoMDS {
             paciente.Nome = tb_nome.Text;
             paciente.Data_Nascimento = dp_data_nasc.Value;
             paciente.Morada = tb_morada.Text;
-            paciente.Cod_Postas = nud_cod1 + " - " + nud_cod2;
+            paciente.Cod_Postas = tb_codposta.Text;
             paciente.Nacionalidade = tb_nacionalidade.Text;
-            paciente.Nif = int.Parse(""+nud_nif.Value);
-            paciente.N_cc = int.Parse("" + nud_cc.Value);
-            paciente.N_cc = int.Parse("" + nud_sns.Value);
+            if (tb_nif.Text.Length > 0)
+                paciente.Nif = int.Parse(tb_nif.Text);
+            if (tb_cc.Text.Length > 0)
+                paciente.N_cc = int.Parse(tb_cc.Text);
+            if(tb_sns.Text.Length > 0)
+                paciente.N_sns = int.Parse(tb_sns.Text);
+            paciente.Avatar = pb_avatar.ImageLocation;
+            paciente.User = user;
+
+            if (pacienteRepo.Add(paciente)) {
+                this.Close();
+            }
+            
+        }
+
+        private void bt_cancelar_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }
