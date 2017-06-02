@@ -58,6 +58,7 @@ namespace ProjetoMDS {
                 Paciente paciente;
                 while (reader.Read()) {
                     paciente = new Paciente();
+                    paciente.id = reader.GetInt32("id");
                     paciente.Nome = reader.GetString("nome");
                     paciente.Data_Nascimento = reader.GetDateTime("data_nasc");
                     paciente.Cod_Postas = reader.GetString("cod_postal");
@@ -65,7 +66,7 @@ namespace ProjetoMDS {
                     paciente.Nif = reader.GetInt32("nif");
                     paciente.N_cc = reader.GetInt32("cc");
                     paciente.N_sns = reader.GetInt32("sns");
-                    //paciente.Avatar = reader.GetString("avatar");
+                    paciente.Avatar = "not null";
                     lista.Add(paciente);
                 }
             } catch (Exception ex) {

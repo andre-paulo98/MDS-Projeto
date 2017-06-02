@@ -14,12 +14,14 @@ namespace ProjetoMDS
     {
         List<Consulta> listConsulta = new List<Consulta>();
         consultaRepository consultaRepo = new consultaRepository();
+        Medico medicoLogado = new Medico();
         
-        public formListaConsultas()
+        public formListaConsultas(Medico medico)
         {
             InitializeComponent();
+            this.medicoLogado = medico;
             labelData.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            listConsulta = consultaRepo.listaConsulta();
+            listConsulta = consultaRepo.listaConsulta(medicoLogado);
             refeshConsultasList();
         }
 
@@ -41,12 +43,12 @@ namespace ProjetoMDS
         {
             if (tbPesquisa.Text != "")
             {
-                listConsulta = consultaRepo.listaConsultaByName(tbPesquisa.Text);
+                listConsulta = consultaRepo.listaConsultaByName(tbPesquisa.Text, medicoLogado);
                 refeshConsultasList();
             }
             else
             {
-                listConsulta = consultaRepo.listaConsulta();
+                listConsulta = consultaRepo.listaConsulta(medicoLogado);
                 refeshConsultasList();
             }
         }

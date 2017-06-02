@@ -94,6 +94,7 @@ namespace ProjetoMDS {
                     user.username = reader.GetString("username");
                     user.password = reader.GetString("password");
                     user.permissao = reader.GetInt32("permissao");
+
                 }
             }
             catch (Exception ex)

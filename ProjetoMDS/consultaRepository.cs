@@ -44,7 +44,7 @@ namespace ProjetoMDS
             }
         }
 
-        public List<Consulta> listaConsulta()
+        public List<Consulta> listaConsulta(Medico medicoReferencia)
         {
             List<Consulta> lista = new List<Consulta>();
             Consulta consulta;
@@ -56,8 +56,10 @@ namespace ProjetoMDS
             query.CommandText = "SELECT * FROM consultas "+
                                 "JOIN paciente ON paciente.id = consultas.id_paciente "+
                                 "JOIN medico ON medico.id = consultas.id_medico "+
-                                "JOIN users on users.id=paciente.id_user";
+                                "JOIN users on users.id=paciente.id_user "+
+                                "WHERE id_medico = @id_medico";
 
+            query.Parameters.AddWithValue("@id_medico", medicoReferencia.id);
             try
             {
                 MySqlDataReader reader = query.ExecuteReader();
@@ -114,7 +116,7 @@ namespace ProjetoMDS
             return lista;
         }
 
-        public List<Consulta> listaConsultaByName(String NomePaciente)
+        public List<Consulta> listaConsultaByName(String NomePaciente, Medico medicoReferencia)
         {
             List<Consulta> lista = new List<Consulta>();
             Consulta consulta;
@@ -129,9 +131,11 @@ namespace ProjetoMDS
                                 "JOIN paciente ON paciente.id = consultas.id_paciente " +
                                 "JOIN medico ON medico.id = consultas.id_medico " +
                                 "JOIN users on users.id=paciente.id_user "+
-                                "WHERE paciente.nome = @nome";
+                                "WHERE paciente.nome like @nome "+
+                                "AND id_medico = @id_medico";
 
-            query.Parameters.AddWithValue("@nome", NomePaciente);
+            query.Parameters.AddWithValue("@nome", "%"+NomePaciente+"%");
+            query.Parameters.AddWithValue("@id_medico", medicoReferencia);
             try
             {
                 MySqlDataReader reader = query.ExecuteReader();

@@ -17,7 +17,7 @@ namespace ProjetoMDS
         consultaRepository consultaRepos = new consultaRepository();
         Consulta novaConsulta;
         List<Medico> medicoList = new List<Medico>();
-        Paciente paciente = new Paciente();
+        Paciente paciente;
 
         public formAgendarConsulta(Paciente paciente)//passar o paciente por parametro
         {
@@ -28,6 +28,7 @@ namespace ProjetoMDS
 
         public void refreshListBox()
         {
+            listBox1.Items.Clear();
             medicoList= medioRepos.GetMedicoByEsp(cbEsp.SelectedItem.ToString());
             foreach (Medico medico in medicoList)
             {
@@ -48,7 +49,9 @@ namespace ProjetoMDS
                 novaConsulta.paciente = paciente;
 
                 consultaRepos.addConsulta(novaConsulta);
+                Close();
             }
+            
             
         }
 

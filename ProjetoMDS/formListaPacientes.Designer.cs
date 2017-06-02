@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formListaPacientes));
             this.dgv_pacientes = new System.Windows.Forms.DataGridView();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N_cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,8 +106,10 @@
             this.Controls.Add(this.bt_novo);
             this.Controls.Add(this.dgv_pacientes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formListaPacientes";
-            this.Text = "formListaPacientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Lista de Pacientes";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_pacientes)).EndInit();
             this.ResumeLayout(false);
 

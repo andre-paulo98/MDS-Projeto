@@ -48,7 +48,7 @@ namespace ProjetoMDS {
             con.Open();
             MySqlCommand query = con.CreateCommand();
             query.CommandText = "SELECT * FROM users " +
-                                "JOIN medico on medico.id=users.id" +
+                                "JOIN medico on medico.id=users.id " +
                                 "WHERE especialidade = @especialidade";
 
             query.Parameters.AddWithValue("@especialidade", especialidade);

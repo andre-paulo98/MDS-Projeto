@@ -91,6 +91,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(577, 300);
             this.Name = "formUtilizadores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Utilizadores";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formUtilizadores_FormClosing);
             this.ResumeLayout(false);

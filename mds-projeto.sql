@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `mds-projeto`
 --
+drop database if exists `mds-projeto`;
+
 CREATE DATABASE IF NOT EXISTS `mds-projeto` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `mds-projeto`;
 
@@ -40,10 +42,6 @@ CREATE TABLE `consultas` (
 -- Dumping data for table `consultas`
 --
 
-INSERT INTO `consultas` (`id`, `id_medico`, `id_paciente`, `hora`, `data`) VALUES
-(1, 2, 1, '2017-06-14 05:06:00', '2017-06-14 00:00:00'),
-(2, 2, 2, '2017-06-14 08:00:00', '2017-06-07 00:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -52,7 +50,7 @@ INSERT INTO `consultas` (`id`, `id_medico`, `id_paciente`, `hora`, `data`) VALUE
 
 CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
-  `especialidade` int(11) NOT NULL,
+  `especialidade` varchar(50) NOT NULL,
   `entrada` datetime NOT NULL,
   `saida` datetime NOT NULL,
   `segSocial` int(11) NOT NULL
@@ -61,9 +59,6 @@ CREATE TABLE `medico` (
 --
 -- Dumping data for table `medico`
 --
-
-INSERT INTO `medico` (`id`, `especialidade`, `entrada`, `saida`, `segSocial`) VALUES
-(2, '0', '2017-06-02 14:46:45', '2017-06-02 14:46:45', 0);
 
 -- --------------------------------------------------------
 
@@ -87,10 +82,6 @@ CREATE TABLE `paciente` (
 --
 -- Dumping data for table `paciente`
 --
-
-INSERT INTO `paciente` (`id`, `nome`, `data_nasc`, `cod_postal`, `nacionalidade`, `nif`, `cc`, `sns`, `avatar`, `id_user`) VALUES
-(1, 'xico', '2017-06-06 00:00:00', '123', '123', 123, 123, 123, '123', 1),
-(2, 'joao', '2017-06-16 00:00:00', '123', '123', 123, 123, 123, '123', 1);
 
 -- --------------------------------------------------------
 

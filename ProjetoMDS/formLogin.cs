@@ -8,7 +8,9 @@ namespace ProjetoMDS {
     public partial class formLogin : Form
     {
         UserRepository userRepo = new UserRepository();
+        MedicosRepository mediRepo = new MedicosRepository();
         User user = new User();
+        Medico medicoLogado = new Medico();
 
         public formLogin()
         {
@@ -23,9 +25,12 @@ namespace ProjetoMDS {
             if (userRepo.Login(tbNome.Text, Tools.HashPassword(tbPassword.Text)))
             {
                 user = userRepo.GetUserByUsename(tbNome.Text);
+
+                
                 if (user.permissao == 0)
                 {
-                    formListaConsultas listaConsultas = new formListaConsultas();
+                    medicoLogado = mediRepo.getMedicoList(tbNome.Text);
+                    formListaConsultas listaConsultas = new formListaConsultas(medicoLogado);
                     listaConsultas.Show();
                 }
                 else

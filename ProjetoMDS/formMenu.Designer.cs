@@ -31,9 +31,9 @@
             // btUsers
             // 
             this.btUsers.Image = ((System.Drawing.Image)(resources.GetObject("btUsers.Image")));
-            this.btUsers.Location = new System.Drawing.Point(37, 53);
+            this.btUsers.Location = new System.Drawing.Point(38, 53);
             this.btUsers.Name = "btUsers";
-            this.btUsers.Size = new System.Drawing.Size(125, 99);
+            this.btUsers.Size = new System.Drawing.Size(125, 100);
             this.btUsers.TabIndex = 2;
             this.btUsers.Text = "Utilizadores";
             this.btUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -42,9 +42,9 @@
             // 
             // btPaciente
             // 
-            this.btPaciente.Location = new System.Drawing.Point(237, 53);
+            this.btPaciente.Location = new System.Drawing.Point(236, 53);
             this.btPaciente.Name = "btPaciente";
-            this.btPaciente.Size = new System.Drawing.Size(75, 23);
+            this.btPaciente.Size = new System.Drawing.Size(125, 100);
             this.btPaciente.TabIndex = 3;
             this.btPaciente.Text = "Pacientes";
             this.btPaciente.UseVisualStyleBackColor = true;
@@ -54,13 +54,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 254);
+            this.ClientSize = new System.Drawing.Size(427, 234);
             this.Controls.Add(this.btPaciente);
             this.Controls.Add(this.btUsers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formMenu";
-            this.Text = "formMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMenu_FormClosing);
             this.ResumeLayout(false);
 
