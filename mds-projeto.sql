@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Jun-2017 às 11:18
--- Versão do servidor: 5.7.11
--- PHP Version: 7.0.4
+-- Generation Time: Jun 02, 2017 at 03:49 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,13 +19,11 @@ SET time_zone = "+00:00";
 --
 -- Database: `mds-projeto`
 --
-CREATE DATABASE IF NOT EXISTS `mds-projeto` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `mds-projeto`;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `consultas`
+-- Table structure for table `consultas`
 --
 
 CREATE TABLE `consultas` (
@@ -39,21 +37,28 @@ CREATE TABLE `consultas` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `medico`
+-- Table structure for table `medico`
 --
 
 CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
-  `especialidade` int(11) NOT NULL,
+  `especialidade` varchar(50) NOT NULL,
   `entrada` time NOT NULL,
   `saida` time NOT NULL,
   `segSocial` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `medico`
+--
+
+INSERT INTO `medico` (`id`, `especialidade`, `entrada`, `saida`, `segSocial`) VALUES
+(2, '0', '14:46:45', '14:46:45', 0);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `paciente`
+-- Table structure for table `paciente`
 --
 
 CREATE TABLE `paciente` (
@@ -72,7 +77,7 @@ CREATE TABLE `paciente` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -81,6 +86,14 @@ CREATE TABLE `users` (
   `password` varchar(64) NOT NULL,
   `permissao` int(11) NOT NULL COMMENT '0-medico 1-rececionista 2-admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `permissao`) VALUES
+(1, 'teste', '46070d4bf934fb0d4b06d9e2c46e346944e322444900a435d7d9a95e6d7435f5', 2),
+(2, '1', '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b', 0);
 
 --
 -- Indexes for dumped tables
@@ -132,26 +145,26 @@ ALTER TABLE `paciente`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `consultas`
+-- Constraints for table `consultas`
 --
 ALTER TABLE `consultas`
   ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`id_medico`) REFERENCES `medico` (`id`),
   ADD CONSTRAINT `consultas_ibfk_2` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
 
 --
--- Limitadores para a tabela `medico`
+-- Constraints for table `medico`
 --
 ALTER TABLE `medico`
   ADD CONSTRAINT `medico_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Limitadores para a tabela `paciente`
+-- Constraints for table `paciente`
 --
 ALTER TABLE `paciente`
   ADD CONSTRAINT `fk_user_paciente` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
