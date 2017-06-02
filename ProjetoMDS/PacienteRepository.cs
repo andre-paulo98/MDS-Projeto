@@ -46,6 +46,37 @@ namespace ProjetoMDS {
             return flag;
         }
 
+        public List<Paciente> GetListPacientes() {
+            List<Paciente> lista = new List<Paciente>();
+
+            con.Open();
+            MySqlCommand query = con.CreateCommand();
+            query.CommandText = "SELECT * FROM paciente ";
+
+            try {
+                MySqlDataReader reader = query.ExecuteReader();
+                Paciente paciente;
+                while (reader.Read()) {
+                    paciente = new Paciente();
+                    paciente.Nome = reader.GetString("nome");
+                    paciente.Data_Nascimento = reader.GetDateTime("data_nasc");
+                    paciente.Cod_Postas = reader.GetString("cod_postal");
+                    paciente.Nacionalidade = reader.GetString("nacionalidade");
+                    paciente.Nif = reader.GetInt32("nif");
+                    paciente.N_cc = reader.GetInt32("cc");
+                    paciente.N_sns = reader.GetInt32("sns");
+                    //paciente.Avatar = reader.GetString("avatar");
+                    lista.Add(paciente);
+                }
+            } catch (Exception ex) {
+                MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex.Message);
+            } finally {
+                con.Close();
+            }
+
+            return lista;
+        }
+
         private bool VerifyPaciente(Paciente pac) {
             bool flag = false;
             if (pac.Nome.Length <= 0) {

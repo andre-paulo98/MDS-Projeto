@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ProjetoMDS
@@ -6,6 +7,7 @@ namespace ProjetoMDS
     public partial class formMenu : Form
     {
         User user;
+        FormCollection formsOpen = Application.OpenForms;
         public formMenu(User user)
         {
             this.user = user;
@@ -19,13 +21,19 @@ namespace ProjetoMDS
 
         private void btUsers_Click(object sender, EventArgs e)
         {
-            formUtilizadores formUtilizadores = new formUtilizadores();
-            formUtilizadores.Show();
+            if (!formsOpen.OfType<formUtilizadores>().Any()) {
+                new formUtilizadores().Show(this);
+            }else {
+                formsOpen.OfType<formUtilizadores>().First().Focus();
+            }
         }
 
         private void btConsultas_Click(object sender, EventArgs e) {
-            formListaPacientes formPacientes = new formListaPacientes(user);
-            formPacientes.Show();
+            if (!formsOpen.OfType<formListaPacientes>().Any()) {
+                new formListaPacientes(user).Show(this);
+            } else {
+                formsOpen.OfType<formListaPacientes>().First().Focus();
+            }
         }
     }
 }

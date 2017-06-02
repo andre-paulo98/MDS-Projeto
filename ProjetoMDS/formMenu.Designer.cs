@@ -54,9 +54,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 254);
+            this.ClientSize = new System.Drawing.Size(433, 254);
             this.Controls.Add(this.btPaciente);
             this.Controls.Add(this.btUsers);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formMenu";
             this.Text = "formMenu";

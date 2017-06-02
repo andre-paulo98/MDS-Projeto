@@ -23,55 +23,69 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.n_cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.n_sns = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ativo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgv_pacientes = new System.Windows.Forms.DataGridView();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N_cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N_shs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bt_novo = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_pacientes)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgv_pacientes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nome,
-            this.n_cc,
-            this.n_sns,
-            this.ativo});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 29);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(520, 412);
-            this.dataGridView1.TabIndex = 0;
+            this.dgv_pacientes.AllowUserToAddRows = false;
+            this.dgv_pacientes.AllowUserToDeleteRows = false;
+            this.dgv_pacientes.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_pacientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_pacientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_pacientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgv_pacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_pacientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nome,
+            this.N_cc,
+            this.N_shs});
+            this.dgv_pacientes.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dgv_pacientes.Location = new System.Drawing.Point(30, 29);
+            this.dgv_pacientes.MultiSelect = false;
+            this.dgv_pacientes.Name = "dgv_pacientes";
+            this.dgv_pacientes.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_pacientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_pacientes.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_pacientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_pacientes.Size = new System.Drawing.Size(520, 412);
+            this.dgv_pacientes.TabIndex = 0;
+            this.dgv_pacientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_pacientes_CellDoubleClick);
             // 
-            // nome
+            // Nome
             // 
-            this.nome.Frozen = true;
-            this.nome.HeaderText = "Nome";
-            this.nome.Name = "nome";
-            this.nome.ReadOnly = true;
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
             // 
-            // n_cc
+            // N_cc
             // 
-            this.n_cc.Frozen = true;
-            this.n_cc.HeaderText = "Nº CC";
-            this.n_cc.Name = "n_cc";
-            this.n_cc.ReadOnly = true;
+            this.N_cc.DataPropertyName = "N_cc";
+            this.N_cc.HeaderText = "Nº de Cartão do Cidadão";
+            this.N_cc.Name = "N_cc";
+            this.N_cc.ReadOnly = true;
             // 
-            // n_sns
+            // N_shs
             // 
-            this.n_sns.Frozen = true;
-            this.n_sns.HeaderText = "Nº SNS";
-            this.n_sns.Name = "n_sns";
-            this.n_sns.ReadOnly = true;
-            // 
-            // ativo
-            // 
-            this.ativo.Frozen = true;
-            this.ativo.HeaderText = "Ativo";
-            this.ativo.Name = "ativo";
-            this.ativo.ReadOnly = true;
+            this.N_shs.DataPropertyName = "N_sns";
+            this.N_shs.HeaderText = "Nº do Serviço Nacional de Saude";
+            this.N_shs.Name = "N_shs";
+            this.N_shs.ReadOnly = true;
             // 
             // bt_novo
             // 
@@ -89,22 +103,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 499);
             this.Controls.Add(this.bt_novo);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_pacientes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "formListaPacientes";
             this.Text = "formListaPacientes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_pacientes)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn n_cc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn n_sns;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ativo;
         private System.Windows.Forms.Button bt_novo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N_cc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N_shs;
+        private System.Windows.Forms.DataGridView dgv_pacientes;
     }
 }
