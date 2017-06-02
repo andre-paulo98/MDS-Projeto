@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Jun-2017 às 10:37
--- Versão do servidor: 5.7.11
--- PHP Version: 7.0.4
+-- Generation Time: 02-Jun-2017 às 12:54
+-- Versão do servidor: 10.1.21-MariaDB
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `mds-projeto`
 --
+DROP DATABASE IF EXISTS `mds-projeto`;
 CREATE DATABASE IF NOT EXISTS `mds-projeto` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `mds-projeto`;
 
@@ -30,10 +31,29 @@ USE `mds-projeto`;
 
 CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
-  `especialidade` varchar(50) NOT NULL,
+  `especialidade` int(11) NOT NULL,
   `entrada` time NOT NULL,
   `saida` time NOT NULL,
   `segSocial` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `paciente`
+--
+
+CREATE TABLE `paciente` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(45) NOT NULL,
+  `data_nasc` date NOT NULL,
+  `cod_postal` varchar(8) NOT NULL,
+  `nacionalidade` varchar(20) NOT NULL,
+  `nif` int(9) NOT NULL,
+  `cc` int(11) NOT NULL,
+  `sns` int(11) NOT NULL,
+  `avatar` varchar(50) NOT NULL,
+  `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -50,14 +70,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `permissao`) VALUES
-(1, 'teste', '46070d4bf934fb0d4b06d9e2c46e346944e322444900a435d7d9a95e6d7435f5', 1),
-(3, '1', '1', 0);
-
---
 -- Indexes for dumped tables
 --
 
@@ -66,6 +78,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `permissao`) VALUES
 --
 ALTER TABLE `medico`
   ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `paciente`
+--
+ALTER TABLE `paciente`
+  ADD KEY `fk_user_paciente` (`id_user`);
 
 --
 -- Indexes for table `users`
@@ -82,7 +100,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -92,6 +110,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `medico`
   ADD CONSTRAINT `medico_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `paciente`
+--
+ALTER TABLE `paciente`
+  ADD CONSTRAINT `fk_user_paciente` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
