@@ -57,23 +57,11 @@
     <Compile Include="formAddUtilizador.Designer.cs">
       <DependentUpon>formAddUtilizador.cs</DependentUpon>
     </Compile>
-    <Compile Include="formConsultas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formConsultas.Designer.cs">
-      <DependentUpon>formConsultas.cs</DependentUpon>
-    </Compile>
     <Compile Include="formLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formLogin.Designer.cs">
       <DependentUpon>formLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="formMarcarConsulta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formMarcarConsulta.Designer.cs">
-      <DependentUpon>formMarcarConsulta.cs</DependentUpon>
     </Compile>
     <Compile Include="formMenu.cs">
       <SubType>Form</SubType>
@@ -102,9 +90,6 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="formAddUtilizador.resx">
       <DependentUpon>formAddUtilizador.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="formConsultas.resx">
-      <DependentUpon>formConsultas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>

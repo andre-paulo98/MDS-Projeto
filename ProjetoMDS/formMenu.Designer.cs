@@ -46,8 +46,9 @@
             this.btConsultas.Name = "btConsultas";
             this.btConsultas.Size = new System.Drawing.Size(75, 23);
             this.btConsultas.TabIndex = 3;
-            this.btConsultas.Text = "button1";
+            this.btConsultas.Text = "Pacientes";
             this.btConsultas.UseVisualStyleBackColor = true;
+            this.btConsultas.Click += new System.EventHandler(this.btConsultas_Click);
             // 
             // formMenu
             // 

@@ -20,5 +20,9 @@ namespace ProjetoMDS
             formUtilizadores formUtilizadores = new formUtilizadores();
             formUtilizadores.Show();
         }
+
+        private void btConsultas_Click(object sender, EventArgs e) {
+
+        }
     }
 }
