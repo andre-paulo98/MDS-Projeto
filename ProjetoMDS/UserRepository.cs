@@ -6,11 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjetoMDS {
-    class UserRepository {
+namespace ProjetoMDS
+{
+    class UserRepository
+    {
 
         MySqlConnection con;
-        public UserRepository() {
+        public UserRepository()
+        {
             string CString =
                 "server=localhost;" +
                 "database=mds-projeto;" +
@@ -19,18 +22,23 @@ namespace ProjetoMDS {
             con = new MySqlConnection(CString);
         }
 
-        public bool Login(string nome, string pw) {
+        public bool Login(string nome, string pw)
+        {
             User user = GetUserByUsename(nome);
             bool flag = false;
-            if (user.password == pw) {
+            if (user.password == pw)
+            {
                 flag = true;
-            }else {
+            }
+            else
+            {
                 MessageBox.Show("Falha a efetuar Login!\nCredencias Invalidas!");
             }
             return flag;
         }
 
-        public void Add(User user) {
+        public void Add(User user)
+        {
             //0-medico 1-rececionista 2-admin
             con.Open();
             MySqlCommand query = con.CreateCommand();
@@ -38,105 +46,88 @@ namespace ProjetoMDS {
             query.Parameters.AddWithValue("@username", user.username);
             query.Parameters.AddWithValue("@password", user.username);
             query.Parameters.AddWithValue("@permissao", user.permissao);
-            try {
+            try
+            {
                 query.ExecuteNonQuery();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex.Message);
-            } finally {
+            }
+            finally
+            {
                 con.Close();
             }
         }
 
-        public void Remove(User user) {
+        public void Remove(User user)
+        {
             con.Open();
             MySqlCommand query = con.CreateCommand();
             query.CommandText = "DELETE FROM users where username = @username";
             query.Parameters.AddWithValue("@username", user.username);
-            try {
+            try
+            {
                 query.ExecuteNonQuery();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex.Message);
-            } finally {
+            }
+            finally
+            {
                 con.Close();
             }
         }
 
-        public User GetUserByUsename(string username) {
+        public User GetUserByUsename(string username)
+        {
             User user = new User();
             con.Open();
             MySqlCommand query = con.CreateCommand();
             query.CommandText = "SELECT * FROM users WHERE username = @username";
             query.Parameters.AddWithValue("@username", username);
-            try {
+            try
+            {
                 MySqlDataReader reader = query.ExecuteReader();
-                if (reader.Read()) {
+                if (reader.Read())
+                {
                     user.id = reader.GetInt32("id");
                     user.username = reader.GetString("username");
                     user.password = reader.GetString("password");
                     user.permissao = reader.GetInt32("permissao");
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex.Message);
-            } finally {
+            }
+            finally
+            {
                 con.Close();
             }
-            
+
             return user;
         }
 
-        public List<User> GetUsers() {
+        public List<User> GetUsers()
+        {
             List<User> lista = new List<User>();
             con.Open();
             MySqlCommand query = con.CreateCommand();
             query.CommandText = "SELECT * FROM users";
-            try {
+            try
+            {
                 MySqlDataReader reader = query.ExecuteReader();
                 User user;
-                while (reader.Read()) {
+                while (reader.Read())
+                {
                     user = new User();
                     user.id = reader.GetInt32("id");
                     user.username = reader.GetString("username");
                     user.password = reader.GetString("password");
                     user.permissao = reader.GetInt32("permissao");
                     lista.Add(user);
-                }
-            } catch (Exception ex) {
-                MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex.Message);
-            } finally {
-                con.Close();
-            }
-            
-            return lista;
-        }
-
-        public List<Medico> GetMedicoByEsp(string especialidade)
-        {
-            List<Medico> lista = new List<Medico>();
-            
-            con.Open();
-            MySqlCommand query = con.CreateCommand();
-            query.CommandText = "SELECT * FROM users "+
-                                "JOIN medico on medico.id=users.id"+
-                                "WHERE especialidade = @especialidade";
-
-            query.Parameters.AddWithValue("@especialidade", especialidade);
-
-            try
-            {
-                MySqlDataReader reader = query.ExecuteReader();
-                Medico medico;
-                while (reader.Read())
-                {
-                    medico = new Medico();
-                    medico.id = reader.GetInt32("id");
-                    medico.username = reader.GetString("username");
-                    medico.password = reader.GetString("password");
-                    medico.permissao = reader.GetInt32("permissao");
-                    medico.especialidade = reader.GetString("especialidade");
-                    medico.entrada = reader.GetDateTime("entrada");
-                    medico.saida = reader.GetDateTime("saida");
-                    medico.permissao = reader.GetInt32("segSocial");
-                    lista.Add(medico);
                 }
             }
             catch (Exception ex)
