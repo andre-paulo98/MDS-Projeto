@@ -7,11 +7,12 @@ namespace TestesUnitarios {
     
     public class UnitTest1 {
         MedicosRepository medicoRepo = new MedicosRepository();
+        UserRepository userRepo = new UserRepository();
         private string medicoUsername = "MedicoTesteUnitario";
         private string medicoPassword = Tools.HashPassword("MedicoTesteUnitario");
 
         [TestMethod]
-        public void TestMethod1() {
+        public void TesteAdicionaMedico() {
             Medico medico = new Medico();
             Medico medicoBaseDados = new Medico();
 
@@ -26,23 +27,32 @@ namespace TestesUnitarios {
 
             medicoBaseDados = medicoRepo.getMedicoList(medicoUsername);
             if(!medicoRepo.checkTwoMedics(medico, medicoBaseDados)) {
-                Console.WriteLine(medico.username == medicoBaseDados.username);
-                Console.WriteLine(medico.password == medicoBaseDados.password);
-                Console.WriteLine(medico.permissao == medicoBaseDados.permissao);
-                Console.WriteLine(medico.especialidade == medicoBaseDados.especialidade);
-                Console.WriteLine(medico.entrada == medicoBaseDados.entrada);
-                Console.WriteLine(medico.saida == medicoBaseDados.saida);
-                Console.WriteLine(medico.nSegSocial == medicoBaseDados.nSegSocial);
-                Console.WriteLine(medico.cargo == medicoBaseDados.cargo);
-                Console.WriteLine(medico.id == medicoBaseDados.id);
+                medicoRepo.eliminaMedico(medicoUsername);
                 throw new Exception("Medicos são diferentes");
             }
-            
+            medicoRepo.eliminaMedico(medicoUsername);
+
         }
 
-        /*[TestMethod]
-        public void TestMethod2() {
+        [TestMethod]
+        public void TesteLoginMedico() {
+            Medico medico = new Medico();
 
-        }*/
+            medico.username = medicoUsername;
+            medico.password = medicoPassword;
+            medico.permissao = 0;
+            medico.especialidade = "Pediatria";
+            medico.entrada = new DateTime(2017, 06, 02, 01, 00, 00);
+            medico.saida = new DateTime(2017, 06, 02, 02, 00, 00);
+            medico.nSegSocial = 987654321;
+            medicoRepo.Add(medico);
+
+            if(!userRepo.Login(medicoUsername, medicoPassword)) {
+                medicoRepo.eliminaMedico(medicoUsername);
+                throw new Exception("Login incorreto");
+            }
+            medicoRepo.eliminaMedico(medicoUsername);
+
+        }
     }
 }

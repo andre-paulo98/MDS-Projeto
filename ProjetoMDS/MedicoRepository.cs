@@ -78,15 +78,30 @@ namespace ProjetoMDS {
         }
         
         public bool checkTwoMedics(Medico med1, Medico med2) {
-            var prop = med1.GetType().GetProperties();
-            foreach(var props in prop) {
-                Console.WriteLine(props.Name);
-                string Textmed1 = (string) med1[props.Name]; string Textmed2 = (string) med2[props.Name]; // TODO ACABAR ESTA PORCARIA QUE EU NÃO CONSIGO FAZER 
-                if(Textmed1 != Textmed2) {
-                    return false;
-                }
-            }
+            if(med1.username != med2.username) return false;
+            if(med1.password != med2.password) return false;
+            if(med1.permissao != med2.permissao) return false;
+            if(med1.especialidade != med2.especialidade) return false;
+            if(med1.entrada != med2.entrada) return false;
+            if(med1.saida != med2.saida) return false;
+            if(med1.nSegSocial != med2.nSegSocial) return false;
+            if(med1.cargo != med2.cargo) return false;
+            if(med1.id != med2.id) return false;
             return true;
+        }
+
+        public void eliminaMedico(string username) {
+            con.Open();
+            MySqlCommand query = con.CreateCommand();
+            query.CommandText = "DELETE FROM users WHERE username = @username";
+            query.Parameters.AddWithValue("@username", username);
+            try {
+                query.ExecuteNonQuery();
+            } catch(Exception ex) {
+                MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex.Message);
+            } finally {
+                con.Close();
+            }
         }
         public Medico getMedicoList(string username)
         {
