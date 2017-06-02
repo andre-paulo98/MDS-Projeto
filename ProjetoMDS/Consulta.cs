@@ -8,6 +8,7 @@ namespace ProjetoMDS
 {
     class Consulta
     {
+        public int id { get; set; }
         public Medico medico { get; set; }
 
         public Paciente paciente { get; set; }
@@ -15,5 +16,10 @@ namespace ProjetoMDS
         public DateTime data { get; set; }
 
         public DateTime hora { get; set; }
+
+        public override string ToString()
+        {
+            return hora.ToString("HH:mm") + "\t\t" + paciente.Nome;
+        }
     }
 }

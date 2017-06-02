@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2017 at 03:49 PM
+-- Generation Time: Jun 02, 2017 at 05:06 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.9
 
@@ -30,9 +30,17 @@ CREATE TABLE `consultas` (
   `id` int(11) NOT NULL,
   `id_medico` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL,
-  `hora` date NOT NULL,
-  `data` date NOT NULL
+  `hora` datetime NOT NULL,
+  `data` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `consultas`
+--
+
+INSERT INTO `consultas` (`id`, `id_medico`, `id_paciente`, `hora`, `data`) VALUES
+(1, 2, 1, '2017-06-14 05:06:00', '2017-06-14 00:00:00'),
+(2, 2, 2, '2017-06-14 08:00:00', '2017-06-07 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -43,8 +51,8 @@ CREATE TABLE `consultas` (
 CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
   `especialidade` varchar(50) NOT NULL,
-  `entrada` time NOT NULL,
-  `saida` time NOT NULL,
+  `entrada` datetime NOT NULL,
+  `saida` datetime NOT NULL,
   `segSocial` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -53,7 +61,7 @@ CREATE TABLE `medico` (
 --
 
 INSERT INTO `medico` (`id`, `especialidade`, `entrada`, `saida`, `segSocial`) VALUES
-(2, '0', '14:46:45', '14:46:45', 0);
+(2, '0', '2017-06-02 14:46:45', '2017-06-02 14:46:45', 0);
 
 -- --------------------------------------------------------
 
@@ -64,7 +72,7 @@ INSERT INTO `medico` (`id`, `especialidade`, `entrada`, `saida`, `segSocial`) VA
 CREATE TABLE `paciente` (
   `id` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
-  `data_nasc` date NOT NULL,
+  `data_nasc` datetime NOT NULL,
   `cod_postal` varchar(8) NOT NULL,
   `nacionalidade` varchar(20) NOT NULL,
   `nif` int(9) NOT NULL,
@@ -73,6 +81,14 @@ CREATE TABLE `paciente` (
   `avatar` varchar(50) NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `paciente`
+--
+
+INSERT INTO `paciente` (`id`, `nome`, `data_nasc`, `cod_postal`, `nacionalidade`, `nif`, `cc`, `sns`, `avatar`, `id_user`) VALUES
+(1, 'xico', '2017-06-06 00:00:00', '123', '123', 123, 123, 123, '123', 1),
+(2, 'joao', '2017-06-16 00:00:00', '123', '123', 123, 123, 123, '123', 1);
 
 -- --------------------------------------------------------
 
@@ -111,6 +127,7 @@ ALTER TABLE `consultas`
 -- Indexes for table `medico`
 --
 ALTER TABLE `medico`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id` (`id`);
 
 --
@@ -135,12 +152,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `consultas`
 --
 ALTER TABLE `consultas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
