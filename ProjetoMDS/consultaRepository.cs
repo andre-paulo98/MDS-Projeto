@@ -43,5 +43,38 @@ namespace ProjetoMDS
                 con.Close();
             }
         }
+
+        public List<Consulta> listaConsulta()
+        {
+            List<Consulta> lista = new List<Consulta>();
+            Consulta consulta;
+            con.Open();
+            MySqlCommand query = con.CreateCommand();
+            query.CommandText = "SELECT * FROM consultas"+
+                                "JOIN paciente ON paciente.id = consultas.id_paciente"+
+                                "JOIN medico ON medico.id = consultas.id_medico";
+
+            try
+            {
+                MySqlDataReader reader = query.ExecuteReader();
+                
+                while (reader.Read())
+                {
+                    consulta = new Consulta();
+                    consulta.medico.id = reader.get("id_medico"):
+                    lista.Add(consulta);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return lista;
+        }
     }
 }

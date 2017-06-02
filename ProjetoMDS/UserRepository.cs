@@ -42,7 +42,7 @@ namespace ProjetoMDS {
             MySqlCommand query = con.CreateCommand();
             query.CommandText = "INSERT INTO users (username,password,permissao) VALUES (@username,@password,@permissao)";
             query.Parameters.AddWithValue("@username", user.username);
-            query.Parameters.AddWithValue("@password", user.username);
+            query.Parameters.AddWithValue("@password", user.password);
             query.Parameters.AddWithValue("@permissao", user.permissao);
             try
             {

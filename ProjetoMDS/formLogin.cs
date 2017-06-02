@@ -23,7 +23,7 @@ namespace ProjetoMDS {
             if (userRepo.Login(tbNome.Text, Tools.HashPassword(tbPassword.Text)))
             {
                 user = userRepo.GetUserByUsename(tbNome.Text);
-                if (user.permissao == 1)
+                if (user.permissao == 0)
                 {
                     formListaConsultas listaConsultas = new formListaConsultas();
                     listaConsultas.Show();

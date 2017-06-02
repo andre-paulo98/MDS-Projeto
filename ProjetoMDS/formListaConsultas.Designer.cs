@@ -28,19 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelData = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(12, 59);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(380, 160);
+            this.listBox1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Dia:";
+            // 
+            // labelData
+            // 
+            this.labelData.AutoSize = true;
+            this.labelData.Location = new System.Drawing.Point(46, 24);
+            this.labelData.Name = "labelData";
+            this.labelData.Size = new System.Drawing.Size(35, 13);
+            this.labelData.TabIndex = 2;
+            this.labelData.Text = "label2";
             // 
             // formListaConsultas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 262);
+            this.Controls.Add(this.labelData);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listBox1);
             this.Name = "formListaConsultas";
             this.Text = "formListaConsultas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formListaConsultas_FormClosing);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelData;
     }
 }
