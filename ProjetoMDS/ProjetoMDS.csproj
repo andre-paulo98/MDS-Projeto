@@ -51,18 +51,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="consultaRepository.cs" />
     <Compile Include="formAddPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formAddPaciente.Designer.cs">
       <DependentUpon>formAddPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Consultas.cs" />
+    <Compile Include="Consulta.cs" />
     <Compile Include="formAddUtilizador.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formAddUtilizador.Designer.cs">
       <DependentUpon>formAddUtilizador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formListaConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formListaConsultas.Designer.cs">
+      <DependentUpon>formListaConsultas.cs</DependentUpon>
     </Compile>
     <Compile Include="formListaPacientes.cs">
       <SubType>Form</SubType>
@@ -115,9 +122,12 @@
     <EmbeddedResource Include="formAddUtilizador.resx">
       <DependentUpon>formAddUtilizador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formListaConsultas.resx">
+      <DependentUpon>formListaConsultas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formListaPacientes.resx">
       <DependentUpon>formListaPacientes.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="formAgendarConsulta.resx">
       <DependentUpon>formAgendarConsulta.cs</DependentUpon>
     </EmbeddedResource>

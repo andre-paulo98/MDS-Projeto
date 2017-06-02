@@ -43,14 +43,5 @@ namespace ProjetoMDS
                 con.Close();
             }
         }
-
-        public bool verificarHorario(Medico medico)
-        {
-            bool flag = false;
-
-
-
-            return flag;
-        }
     }
 }

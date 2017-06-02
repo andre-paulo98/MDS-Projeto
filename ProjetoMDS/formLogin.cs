@@ -8,6 +8,7 @@ namespace ProjetoMDS {
     public partial class formLogin : Form
     {
         UserRepository userRepo = new UserRepository();
+        User user = new User();
 
         public formLogin()
         {
@@ -18,13 +19,28 @@ namespace ProjetoMDS {
 
         private void button1_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            formMenu formMenu = new formMenu();
+            
             if (userRepo.Login(tbNome.Text, Tools.HashPassword(tbPassword.Text)))
             {
-                new formMenu().Show();
+                user = userRepo.GetUserByUsename(tbNome.Text);
+                if (user.permissao == 1)
+                {
+                    formListaConsultas listaConsultas = new formListaConsultas();
+                    listaConsultas.Show();
+                }
+                else
+                {
+                    formMenu formMenu = new formMenu();
+                    formMenu.Show();
+                }
+                
                 Hide();
             }
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
