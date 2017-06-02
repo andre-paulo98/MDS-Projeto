@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjetoMDS {
-    class Tools {
+    public class Tools {
         public static string HashPassword(string password) {
             System.Security.Cryptography.SHA256Managed crypt = new System.Security.Cryptography.SHA256Managed();
             System.Text.StringBuilder hash = new System.Text.StringBuilder();

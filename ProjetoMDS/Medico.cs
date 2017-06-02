@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjetoMDS {
-    class Medico : User {
+    public class Medico : User {
         public string especialidade { get; set; }
 
         public DateTime entrada { get; set; }

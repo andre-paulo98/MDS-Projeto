@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoMDS", "ProjetoMDS\ProjetoMDS.csproj", "{B3FC7A29-A58E-4D53-9A1D-DF7F53C2A28D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestesUnitarios", "TestesUnitarios\TestesUnitarios.csproj", "{D0EEA626-FC4F-4D5E-A782-ED2616DE7EFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B3FC7A29-A58E-4D53-9A1D-DF7F53C2A28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3FC7A29-A58E-4D53-9A1D-DF7F53C2A28D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3FC7A29-A58E-4D53-9A1D-DF7F53C2A28D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0EEA626-FC4F-4D5E-A782-ED2616DE7EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0EEA626-FC4F-4D5E-A782-ED2616DE7EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0EEA626-FC4F-4D5E-A782-ED2616DE7EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0EEA626-FC4F-4D5E-A782-ED2616DE7EFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjetoMDS {
-    class MedioRepository {
+    public class MedioRepository {
         MySqlConnection con;
         public MedioRepository() {
             string CString =
@@ -17,7 +17,8 @@ namespace ProjetoMDS {
                 "pwd=;";
             con = new MySqlConnection(CString);
         }
-
+        
+        // TODO: teste unitario
         public void Add(Medico medico) {
             //0-medico 1-rececionista 2-admin
             con.Open();

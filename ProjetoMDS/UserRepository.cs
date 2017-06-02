@@ -6,10 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjetoMDS
-{
-    class UserRepository
-    {
+namespace ProjetoMDS {
+    public class UserRepository {
 
         MySqlConnection con;
         public UserRepository()
@@ -22,8 +20,8 @@ namespace ProjetoMDS
             con = new MySqlConnection(CString);
         }
 
-        public bool Login(string nome, string pw)
-        {
+        // TODO: teste unitario
+        public bool Login(string nome, string pw) {
             User user = GetUserByUsename(nome);
             bool flag = false;
             if (user.password == pw)
