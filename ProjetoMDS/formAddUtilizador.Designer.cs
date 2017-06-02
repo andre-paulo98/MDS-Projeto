@@ -39,14 +39,14 @@
             this.btCancelar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtHoraSaida = new System.Windows.Forms.DateTimePicker();
+            this.nSegSocial = new System.Windows.Forms.NumericUpDown();
             this.dtHoraEntrada = new System.Windows.Forms.DateTimePicker();
+            this.dtHoraSaida = new System.Windows.Forms.DateTimePicker();
             this.cbEspecialidade = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.nSegSocial = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nSegSocial)).BeginInit();
             this.SuspendLayout();
@@ -175,16 +175,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalhes de Médico";
             // 
-            // dtHoraSaida
+            // nSegSocial
             // 
-            this.dtHoraSaida.CustomFormat = "HH:mm";
-            this.dtHoraSaida.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtHoraSaida.Location = new System.Drawing.Point(99, 128);
-            this.dtHoraSaida.Name = "dtHoraSaida";
-            this.dtHoraSaida.ShowUpDown = true;
-            this.dtHoraSaida.Size = new System.Drawing.Size(181, 20);
-            this.dtHoraSaida.TabIndex = 5;
-            this.dtHoraSaida.ValueChanged += new System.EventHandler(this.dtHoraSaida_ValueChanged);
+            this.nSegSocial.Location = new System.Drawing.Point(123, 61);
+            this.nSegSocial.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.nSegSocial.Name = "nSegSocial";
+            this.nSegSocial.Size = new System.Drawing.Size(157, 20);
+            this.nSegSocial.TabIndex = 9;
             // 
             // dtHoraEntrada
             // 
@@ -195,7 +196,16 @@
             this.dtHoraEntrada.ShowUpDown = true;
             this.dtHoraEntrada.Size = new System.Drawing.Size(181, 20);
             this.dtHoraEntrada.TabIndex = 4;
-            this.dtHoraEntrada.ValueChanged += new System.EventHandler(this.dtHoraEntrada_ValueChanged);
+            // 
+            // dtHoraSaida
+            // 
+            this.dtHoraSaida.CustomFormat = "HH:mm";
+            this.dtHoraSaida.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtHoraSaida.Location = new System.Drawing.Point(99, 128);
+            this.dtHoraSaida.Name = "dtHoraSaida";
+            this.dtHoraSaida.ShowUpDown = true;
+            this.dtHoraSaida.Size = new System.Drawing.Size(181, 20);
+            this.dtHoraSaida.TabIndex = 5;
             // 
             // cbEspecialidade
             // 
@@ -211,6 +221,15 @@
             this.cbEspecialidade.Name = "cbEspecialidade";
             this.cbEspecialidade.Size = new System.Drawing.Size(181, 21);
             this.cbEspecialidade.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 63);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(109, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Nº Segurança Social:";
             // 
             // label7
             // 
@@ -238,27 +257,6 @@
             this.label5.Size = new System.Drawing.Size(76, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Especialidade:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 63);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(109, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Nº Segurança Social:";
-            // 
-            // nSegSocial
-            // 
-            this.nSegSocial.Location = new System.Drawing.Point(123, 61);
-            this.nSegSocial.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.nSegSocial.Name = "nSegSocial";
-            this.nSegSocial.Size = new System.Drawing.Size(157, 20);
-            this.nSegSocial.TabIndex = 9;
             // 
             // formAddUtilizador
             // 

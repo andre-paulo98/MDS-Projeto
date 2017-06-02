@@ -67,17 +67,6 @@ namespace ProjetoMDS
             }
         }
 
-        private void dtHoraEntrada_ValueChanged(object sender, EventArgs e) {
-            if(dtHoraEntrada.Value >= dtHoraSaida.Value) {
-                dtHoraSaida.Value = dtHoraEntrada.Value.AddMinutes(1);
-            }
-        }
-        private void dtHoraSaida_ValueChanged(object sender, EventArgs e) {
-            if(dtHoraSaida.Value <= dtHoraEntrada.Value) {
-                dtHoraEntrada.Value = dtHoraSaida.Value.AddMinutes(-1);
-            }
-        }
-
         
     }
 }

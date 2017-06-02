@@ -51,11 +51,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="Consultas.cs" />
     <Compile Include="formAddUtilizador.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formAddUtilizador.Designer.cs">
       <DependentUpon>formAddUtilizador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formAgendarConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAgendarConsulta.Designer.cs">
+      <DependentUpon>formAgendarConsulta.cs</DependentUpon>
     </Compile>
     <Compile Include="formLogin.cs">
       <SubType>Form</SubType>
@@ -90,6 +97,9 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="formAddUtilizador.resx">
       <DependentUpon>formAddUtilizador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formAgendarConsulta.resx">
+      <DependentUpon>formAgendarConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
