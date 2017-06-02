@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Jun-2017 às 11:04
--- Versão do servidor: 10.1.21-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: 02-Jun-2017 às 10:37
+-- Versão do servidor: 5.7.11
+-- PHP Version: 7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,7 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `mds-projeto`
 --
-DROP DATABASE IF EXISTS `mds-projeto`;
 CREATE DATABASE IF NOT EXISTS `mds-projeto` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `mds-projeto`;
 
@@ -31,7 +30,7 @@ USE `mds-projeto`;
 
 CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
-  `especialidade` int(11) NOT NULL,
+  `especialidade` varchar(50) NOT NULL,
   `entrada` time NOT NULL,
   `saida` time NOT NULL,
   `segSocial` int(11) NOT NULL
@@ -49,6 +48,14 @@ CREATE TABLE `users` (
   `password` varchar(64) NOT NULL,
   `permissao` int(11) NOT NULL COMMENT '0-medico 1-rececionista 2-admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `permissao`) VALUES
+(1, 'teste', '46070d4bf934fb0d4b06d9e2c46e346944e322444900a435d7d9a95e6d7435f5', 1),
+(3, '1', '1', 0);
 
 --
 -- Indexes for dumped tables
@@ -75,7 +82,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
