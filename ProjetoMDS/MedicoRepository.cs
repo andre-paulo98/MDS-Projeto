@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjetoMDS {
-    class MedicosRepository {
+    public class MedicosRepository {
         MySqlConnection con;
         public MedicosRepository() {
             string CString =
@@ -75,6 +76,18 @@ namespace ProjetoMDS {
 
             return lista;
         }
+        
+        public bool checkTwoMedics(Medico med1, Medico med2) {
+            var prop = med1.GetType().GetProperties();
+            foreach(var props in prop) {
+                Console.WriteLine(props.Name);
+                string Textmed1 = (string) med1[props.Name]; string Textmed2 = (string) med2[props.Name]; // TODO ACABAR ESTA PORCARIA QUE EU NÃO CONSIGO FAZER 
+                if(Textmed1 != Textmed2) {
+                    return false;
+                }
+            }
+            return true;
+        }
         public Medico getMedicoList(string username)
         {
             con.Open();
@@ -96,9 +109,10 @@ namespace ProjetoMDS {
                     medico.password = reader.GetString("password");
                     medico.permissao = reader.GetInt32("permissao");
                     medico.especialidade = reader.GetString("especialidade");
-                    medico.entrada = reader.GetDateTime("entrada");
-                    medico.saida = reader.GetDateTime("saida");
-                    medico.permissao = reader.GetInt32("segSocial");
+                    medico.nSegSocial = reader.GetInt32("segSocial");
+                    medico.entrada = DateTime.Parse(reader.GetString("entrada"));
+                    medico.saida = DateTime.Parse(reader.GetString("saida"));
+
                 }
             }
             catch (Exception ex)
