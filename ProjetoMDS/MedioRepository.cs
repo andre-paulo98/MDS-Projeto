@@ -79,8 +79,43 @@ namespace ProjetoMDS {
             {
                 con.Close();
             }
-
             return lista;
+        }
+        public Medico getMedicoList(string username)
+        {
+            con.Open();
+            MySqlCommand query = con.CreateCommand();
+            query.CommandText = "SELECT * FROM users " +
+                                "JOIN medico on medico.id=users.id" +
+                                "WHERE username = @username";
+
+            query.Parameters.AddWithValue("@username", username);
+            Medico medico = new Medico();
+            try
+            {
+                MySqlDataReader reader = query.ExecuteReader();
+                while (reader.Read())
+                {
+                    
+                    medico.id = reader.GetInt32("id");
+                    medico.username = reader.GetString("username");
+                    medico.password = reader.GetString("password");
+                    medico.permissao = reader.GetInt32("permissao");
+                    medico.especialidade = reader.GetString("especialidade");
+                    medico.entrada = reader.GetDateTime("entrada");
+                    medico.saida = reader.GetDateTime("saida");
+                    medico.permissao = reader.GetInt32("segSocial");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro na conexão ao servidor MySQL \n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return medico;
         }
     }
 }
