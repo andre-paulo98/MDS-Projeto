@@ -1,34 +1,13 @@
--- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: 02-Jun-2017 às 17:13
--- Versão do servidor: 10.1.21-MariaDB
--- PHP Version: 7.0.9
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `mds-projeto`
---
-drop database if exists `mds-projeto`;
-
 CREATE DATABASE IF NOT EXISTS `mds-projeto` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `mds-projeto`;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `medico`
---
 
 CREATE TABLE `consultas` (
   `id` int(11) NOT NULL,
@@ -38,15 +17,9 @@ CREATE TABLE `consultas` (
   `data` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `consultas`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `medico`
---
+INSERT INTO `consultas` (`id`, `id_medico`, `id_paciente`, `hora`, `data`) VALUES
+(3, 3, 3, '2017-06-02 15:41:48', '2017-06-01 21:41:48'),
+(4, 3, 4, '2017-06-02 14:43:27', '2017-06-02 21:43:27');
 
 CREATE TABLE `medico` (
   `id` int(11) NOT NULL,
@@ -56,15 +29,8 @@ CREATE TABLE `medico` (
   `segSocial` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `medico`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `paciente`
---
+INSERT INTO `medico` (`id`, `especialidade`, `entrada`, `saida`, `segSocial`) VALUES
+(3, 'Radiografia', '2017-06-02 13:00:13', '2017-06-02 19:00:13', 123456789);
 
 CREATE TABLE `paciente` (
   `id` int(11) NOT NULL,
@@ -75,19 +41,15 @@ CREATE TABLE `paciente` (
   `nif` int(9) NOT NULL,
   `cc` int(11) NOT NULL,
   `sns` int(11) NOT NULL,
-  `avatar` varchar(50) DEFAULT NULL,
+  `avatar` varchar(50) DEFAULT 'null',
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `paciente`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `users`
---
+INSERT INTO `paciente` (`id`, `nome`, `data_nasc`, `cod_postal`, `nacionalidade`, `nif`, `cc`, `sns`, `avatar`, `id_user`) VALUES
+(3, 'André Paulo', '1998-05-24 21:31:47', '2500-794', 'Portuguesa', 123456789, 123456789, 123456789, 'null', 2),
+(4, 'Leonardo Henriques', '1996-08-15 21:32:40', '2321-546', 'Portuguesa', 123654987, 321987564, 321985644, 'null', 2),
+(5, 'André Carvalho', '1997-01-10 21:33:32', '7864-132', 'Portuguesa', 652198765, 468765465, 654165135, 'null', 2),
+(6, 'José', '2017-05-28 22:06:37', '1234-567', 'Portuguesa', 908743216, 654657984, 684651321, '', 2);
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
@@ -96,68 +58,37 @@ CREATE TABLE `users` (
   `permissao` int(11) NOT NULL COMMENT '0-medico 1-rececionista 2-admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Indexes for dumped tables
---
+INSERT INTO `users` (`id`, `username`, `password`, `permissao`) VALUES
+(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 2),
+(2, 'helpdesk', '9f4d10730006eef4bf802559e1f26a254ad4eb11b8d0eff66ace8ffb4d1c12bb', 1),
+(3, 'medico', 'dd7b1b1304303a835688b2ea4c1825c76e748a66c88cebcffd1d983fb8c9dab0', 0);
 
---
--- Indexes for table `medico`
---
+
+ALTER TABLE `consultas`
+  ADD PRIMARY KEY (`id`);
+
 ALTER TABLE `medico`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `paciente`
---
 ALTER TABLE `paciente`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_paciente` (`id_user`);
 
---
--- Indexes for table `users`
---
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
---
--- Indexes for table `consultas`
---
-ALTER TABLE `consultas`
-  ADD PRIMARY KEY (`id`);
-  
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `consultas`
---
 ALTER TABLE `consultas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `paciente`
---
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `users`
---
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
---
--- Limitadores para a tabela `medico`
---
 ALTER TABLE `medico`
   ADD CONSTRAINT `medico_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
---
--- Limitadores para a tabela `paciente`
---
 ALTER TABLE `paciente`
   ADD CONSTRAINT `fk_user_paciente` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
