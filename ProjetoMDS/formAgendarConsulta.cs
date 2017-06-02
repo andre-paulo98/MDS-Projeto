@@ -23,7 +23,7 @@ namespace ProjetoMDS
         {
             InitializeComponent();
             this.paciente = paciente;
-            
+
         }
 
         public void refreshListBox()

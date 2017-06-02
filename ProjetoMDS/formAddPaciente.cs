@@ -32,7 +32,7 @@ namespace ProjetoMDS {
                 paciente.N_cc = int.Parse(tb_cc.Text);
             if(tb_sns.Text.Length > 0)
                 paciente.N_sns = int.Parse(tb_sns.Text);
-            paciente.Avatar = pb_avatar.ImageLocation;
+            paciente.Avatar = "";
             paciente.User = user;
 
             if (pacienteRepo.Add(paciente)) {

@@ -55,6 +55,7 @@
             this.horaPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.horaPicker.Location = new System.Drawing.Point(226, 25);
             this.horaPicker.Name = "horaPicker";
+            this.horaPicker.ShowUpDown = true;
             this.horaPicker.Size = new System.Drawing.Size(50, 20);
             this.horaPicker.TabIndex = 1;
             // 
